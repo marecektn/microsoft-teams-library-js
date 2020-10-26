@@ -13,6 +13,7 @@ import {
   enterFullscreen,
   exitFullscreen,
   sendCustomEvent,
+  toggleIncomingClientAudio,
 } from '../../src/private/privateAPIs';
 import { initialize, _initialize, _uninitialize, getContext } from '../../src/public/publicAPIs';
 
@@ -552,6 +553,30 @@ describe('MicrosoftTeams-privateAPIs', () => {
       let getConfigSettingMessage = utils.findMessageByFunc('getConfigSetting');
       expect(getConfigSettingMessage).not.toBeNull();
       utils.respondToMessage(getConfigSettingMessage, {});
+      expect(callbackCalled).toBe(true);
+    });
+  });
+
+  describe('toggleIncomingClientAudio', () => {
+    it('should not allow calls before initialization', () => {
+      expect(() =>
+        toggleIncomingClientAudio(() => {
+          return;
+        }),
+      ).toThrowError('The library has not yet been initialized');
+    });
+
+    it('should successfully toggle the incoming client audio', () => {
+      utils.initializeWithContext('content');
+
+      let callbackCalled = false;
+      toggleIncomingClientAudio(() => {
+        callbackCalled = true;
+      });
+
+      let toggleIncomingClientAudioMessage = utils.findMessageByFunc('toggleIncomingClientAudio');
+      expect(toggleIncomingClientAudioMessage).not.toBeNull();
+      utils.respondToMessage(toggleIncomingClientAudioMessage, {});
       expect(callbackCalled).toBe(true);
     });
   });

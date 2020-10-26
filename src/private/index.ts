@@ -22,5 +22,6 @@ export {
   sendCustomEvent,
   registerCustomHandler,
   uploadCustomApp,
+  toggleIncomingClientAudio,
 } from './privateAPIs';
 export { conversations } from './conversations';
