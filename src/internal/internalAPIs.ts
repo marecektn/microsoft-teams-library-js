@@ -121,8 +121,8 @@ export function ensureInitialized(...expectedFrameContexts: string[]): void {
     throw new Error('The library has not yet been initialized');
   }
 
-  alert(`!! ExpectedFrameContexts: ${expectedFrameContexts}`);
-  alert(`!! GlobalVars.frameContext: ${GlobalVars.frameContext}`);
+  console.log(`!! ExpectedFrameContexts: ${expectedFrameContexts}`);
+  console.log(`!! GlobalVars.frameContext: ${GlobalVars.frameContext}`);
 
   if (GlobalVars.frameContext && expectedFrameContexts && expectedFrameContexts.length > 0) {
     let found = false;

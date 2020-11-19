@@ -228,8 +228,8 @@ function ensureInitialized() {
     if (!globalVars_1.GlobalVars.initializeCalled) {
         throw new Error('The library has not yet been initialized');
     }
-    alert("!! ExpectedFrameContexts: " + expectedFrameContexts);
-    alert("!! GlobalVars.frameContext: " + globalVars_1.GlobalVars.frameContext);
+    console.log("!! ExpectedFrameContexts: " + expectedFrameContexts);
+    console.log("!! GlobalVars.frameContext: " + globalVars_1.GlobalVars.frameContext);
     if (globalVars_1.GlobalVars.frameContext && expectedFrameContexts && expectedFrameContexts.length > 0) {
         var found = false;
         for (var i = 0; i < expectedFrameContexts.length; i++) {
@@ -2837,7 +2837,7 @@ function getContext(callback) {
     internalAPIs_1.ensureInitialized();
     var messageId = internalAPIs_1.sendMessageRequestToParent('getContext');
     globalVars_1.GlobalVars.callbacks[messageId] = function (context) {
-        alert("!! getContext for frame: " + context.frameContext);
+        console.log("!! getContext for frame: " + context.frameContext);
         if (!context.frameContext) {
             console.log("!! frame context is empty. Setting to: " + globalVars_1.GlobalVars.frameContext);
             // Fallback logic for frameContext properties
