@@ -48,7 +48,7 @@ export function initialize(callback?: () => void, validMessageOrigins?: string[]
 
     if (!GlobalVars.parentWindow) {
       GlobalVars.isFramelessWindow = true;
-      (window as ExtendedWindow).onNativeMessage = handleParentMessage;
+      (window as ExtendedWindow & typeof globalThis).onNativeMessage = handleParentMessage;
     } else {
       // For iFrame scenario, add listener to listen 'message'
       GlobalVars.currentWindow.addEventListener('message', messageListener, false);
