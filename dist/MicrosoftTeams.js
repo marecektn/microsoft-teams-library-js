@@ -228,8 +228,8 @@ function ensureInitialized() {
     if (!globalVars_1.GlobalVars.initializeCalled) {
         throw new Error('The library has not yet been initialized');
     }
-    console.log("!! ExpectedFrameContexts: " + expectedFrameContexts);
-    console.log("!! GlobalVars.frameContext: " + globalVars_1.GlobalVars.frameContext);
+    alert("!! ExpectedFrameContexts: " + JSON.stringify(expectedFrameContexts));
+    alert("!! GlobalVars.frameContext: " + JSON.stringify(globalVars_1.GlobalVars.frameContext));
     if (globalVars_1.GlobalVars.frameContext && expectedFrameContexts && expectedFrameContexts.length > 0) {
         var found = false;
         for (var i = 0; i < expectedFrameContexts.length; i++) {
@@ -2723,7 +2723,7 @@ function initialize(callback, validMessageOrigins) {
             var messageId = internalAPIs_1.sendMessageRequestToParent('initialize', [constants_1.version]);
             globalVars_1.GlobalVars.callbacks[messageId] = function (context, clientType, clientSupportedSDKVersion) {
                 if (clientSupportedSDKVersion === void 0) { clientSupportedSDKVersion = constants_1.defaultSDKVersionForCompatCheck; }
-                console.log('!! setting frame context to GlobalVars: ', context);
+                alert("!! setting frame context to GlobalVars: " + JSON.stringify(context));
                 globalVars_1.GlobalVars.frameContext = context;
                 globalVars_1.GlobalVars.hostClientType = clientType;
                 globalVars_1.GlobalVars.clientSupportedSDKVersion = clientSupportedSDKVersion;
@@ -2837,9 +2837,9 @@ function getContext(callback) {
     internalAPIs_1.ensureInitialized();
     var messageId = internalAPIs_1.sendMessageRequestToParent('getContext');
     globalVars_1.GlobalVars.callbacks[messageId] = function (context) {
-        console.log("!! getContext for frame: " + context.frameContext);
+        alert("!! getContext for frameContext: " + JSON.stringify(context.frameContext));
         if (!context.frameContext) {
-            console.log("!! frame context is empty. Setting to: " + globalVars_1.GlobalVars.frameContext);
+            alert("!! frame context is empty. Setting to: " + JSON.stringify(globalVars_1.GlobalVars.frameContext));
             // Fallback logic for frameContext properties
             context.frameContext = globalVars_1.GlobalVars.frameContext;
         }

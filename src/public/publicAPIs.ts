@@ -64,7 +64,7 @@ export function initialize(callback?: () => void, validMessageOrigins?: string[]
         clientType: string,
         clientSupportedSDKVersion: string = defaultSDKVersionForCompatCheck,
       ) => {
-        console.log('!! setting frame context to GlobalVars: ', context);
+        alert(`!! setting frame context to GlobalVars: ${JSON.stringify(context)}`);
         GlobalVars.frameContext = context;
         GlobalVars.hostClientType = clientType;
         GlobalVars.clientSupportedSDKVersion = clientSupportedSDKVersion;
@@ -186,9 +186,9 @@ export function getContext(callback: (context: Context) => void): void {
 
   const messageId = sendMessageRequestToParent('getContext');
   GlobalVars.callbacks[messageId] = (context: Context) => {
-    console.log(`!! getContext for frame: ${context.frameContext}`);
+    alert(`!! getContext for frameContext: ${JSON.stringify(context.frameContext)}`);
     if (!context.frameContext) {
-      console.log(`!! frame context is empty. Setting to: ${GlobalVars.frameContext}`);
+      alert(`!! frame context is empty. Setting to: ${JSON.stringify(GlobalVars.frameContext)}`);
       // Fallback logic for frameContext properties
       context.frameContext = GlobalVars.frameContext;
     }
