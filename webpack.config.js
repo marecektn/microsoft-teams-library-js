@@ -31,18 +31,7 @@ module.exports = {
     ],
   },
   optimization: {
-    minimize: true,
-    minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          compress: {
-            reduce_funcs: false,
-            inline: false,
-          },
-        },
-        include: /\.min\.js$/,
-      }),
-    ],
+    minimize: false,
   },
   plugins: plugins,
 };

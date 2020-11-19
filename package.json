@@ -3,7 +3,7 @@
   "author": "Microsoft Teams",
   "version": "1.7.0",
   "description": "Microsoft Client SDK for building app for Microsoft teams",
-  "main": "./dist/MicrosoftTeams.min.js",
+  "main": "./dist/MicrosoftTeams.js",
   "typings": "./dist/MicrosoftTeams.d.ts",
   "repository": {
     "type": "git",
