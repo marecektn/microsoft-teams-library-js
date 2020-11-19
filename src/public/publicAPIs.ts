@@ -186,9 +186,9 @@ export function getContext(callback: (context: Context) => void): void {
 
   const messageId = sendMessageRequestToParent('getContext');
   GlobalVars.callbacks[messageId] = (context: Context) => {
-    console.log("!! getContext for frame: ", context.frameContext);
+    alert(`!! getContext for frame: ${context.frameContext}`);
     if (!context.frameContext) {
-      console.log("!! frame context is empty. Setting to: ", GlobalVars.frameContext);
+      console.log(`!! frame context is empty. Setting to: ${GlobalVars.frameContext}`);
       // Fallback logic for frameContext properties
       context.frameContext = GlobalVars.frameContext;
     }
